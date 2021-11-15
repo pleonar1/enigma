@@ -65,4 +65,27 @@ class Enigma
     encrypted_hash[:date]      = date
     encrypted_hash
   end
+
+  def decrypt(message, key = generate_key , date = generate_date)
+    shift = shift(key, format_date(date))
+    message_array = number_generator(message)
+    collector = []
+    encrypted_hash = Hash.new
+    message_array.each_with_index do |letter, index|
+      if index % 4 == 0
+        collector << @alphabet_array.rotate(shift[0])[letter]
+      elsif index % 4 == 1
+        collector << @alphabet_array.rotate(shift[1])[letter]
+      elsif index % 4 == 2
+        collector << @alphabet_array.rotate(shift[2])[letter]
+      elsif index % 4 == 3
+        collector << @alphabet_array.rotate(shift[3])[letter]
+      end
+    end
+    encrypted_hash[:encryption] = collector.join
+    encrypted_hash[:key]       = key
+    encrypted_hash[:date]      = date
+    encrypted_hash
+    require "pry"; binding.pry
+  end
 end
