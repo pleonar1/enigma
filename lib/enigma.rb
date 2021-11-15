@@ -3,7 +3,10 @@ require "date"
 
 
 class Enigma
-  attr_reader :alphabet_hash, :alphabet_array, :encrypted_hash
+  attr_reader :alphabet_hash,
+              :alphabet_array,
+              :encrypted_hash,
+              :decrypted_hash
 
   def initialize
     @alphabet_hash  = Alphabet.new.index
@@ -16,7 +19,7 @@ class Enigma
                        date: nil}
   end
 
-  def generate_keys
+  def generate_key
     rand(99999).to_s.rjust(5, '0')
   end
 

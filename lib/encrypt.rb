@@ -1,4 +1,5 @@
-require "./enigma"
+require "./lib/enigma"
+require "./lib/alphabet"
 
 
 enigma     = Enigma.new
@@ -9,4 +10,6 @@ file = File.new(message).read
 
 File.open(encryption, "w") do |file|
   enigma.encrypt(file)
-  file.puts en
+  file.puts enigma.encrypted_hash{:encryption}
+  puts "Created #{encryption} with the key #{enigma.generate_key} and date #{enigma.generate_date}"
+end

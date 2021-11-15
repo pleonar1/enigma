@@ -20,8 +20,8 @@ RSpec.describe "enigma" do
   end
 
   it "can generate keys" do
-    expect(@enigma.generate_keys).to be_a String
-    expect(@enigma.generate_keys.length).to eq 5
+    expect(@enigma.generate_key).to be_a String
+    expect(@enigma.generate_key.length).to eq 5
   end
 
   it "can generate the date" do
