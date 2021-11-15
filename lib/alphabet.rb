@@ -1,6 +1,6 @@
 class Alphabet
-  attr_reader :index
-  
+  attr_reader :index, :alphabet_array
+
   def initialize
     @index = {
             "a" => 0,
@@ -31,5 +31,6 @@ class Alphabet
             "z" => 25,
             " " => 26
         }
+    @alphabet_array = ("a".."z").to_a << " "
   end
 end
