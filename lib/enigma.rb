@@ -62,7 +62,7 @@ class Enigma
 
   def encrypt(message, key = generate_key , date = generate_date)
     shift = encrypt_shift(key, format_date(date))
-    message_array = number_generator(message)
+    message_array = number_generator(message.gsub(/\n/, ""))
     collector = []
     message_array.each_with_index do |letter, index|
       if index % 4 == 0
