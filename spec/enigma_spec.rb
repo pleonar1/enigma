@@ -15,4 +15,9 @@ RSpec.describe "enigma" do
     expect(@enigma.alphabet).to be_a Hash
     expect(@enigma.alphabet.count).to eq 27
   end
+
+  it "can generate keys" do
+    expect(@enigma.generate_keys).to be_a String
+    expect(@enigma.generate_keys.length).to eq 5
+  end
 end
