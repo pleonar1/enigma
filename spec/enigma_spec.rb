@@ -35,7 +35,11 @@ RSpec.describe "enigma" do
 
   it "can turn the message into an array of numbers" do
     expect(@enigma.number_generator("hello world")).to be_a Array
-    expect(@enigma.number_generator("hello world")).to eq([])
+    expect(@enigma.number_generator("hello world")).to eq([7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3])
+  end
+
+  it "can format the date" do
+    expect(@enigma.format_date("040895")).to eq("6641")
   end
 
   it "can encrypt" do

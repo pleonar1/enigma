@@ -14,6 +14,16 @@ class Enigma
     rand(99999).to_s.rjust(5, '0')
   end
 
+  def format_date(new_date)
+    date = Date.today
+    date_to_string = date.strftime('%d-%m-%Y')
+    date_no_dashes = date_to_string.delete('-').chars
+    date_no_dashes.delete_at(4)
+    date_no_dashes.delete_at(4)
+    final_date = (date_no_dashes.join.to_i) ** 2
+    final_date_code = final_date.to_s.slice(-4..-1)
+  end
+
   def generate_date
     date = Date.today
     date_to_string = date.strftime('%d-%m-%Y')
@@ -32,27 +42,31 @@ class Enigma
     [a_offset, b_offset, c_offset, d_offset]
   end
 
-  def number_generator
-    
+  def number_generator(message)
+    message_array = message.chars
+    message_array.map do |letter|
+      @alphabet_hash[letter]
+    end
   end
 
   def encrypt(message, key = generate_key , date = generate_date)
-    shift = shift(key, date)
-    message_array = message.chars
+    shift = shift(key, format_date(date))
+    message_array = number_generator(message)
     collector = []
     message_array.each_with_index do |letter, index|
       if index % 4 == 0
-        require "pry"; binding.pry
-        collector << @alphabet_array.rotate(shift[0])[letter.to_i]
+
+        collector << @alphabet_array.rotate(shift[0])[letter]
+        # require "pry"; binding.pry
 
       elsif index % 4 == 1
-        collector << @alphabet_array.rotate(shift[1])[index]
+        collector << @alphabet_array.rotate(shift[1])[letter]
       elsif index % 4 == 2
-        collector << @alphabet_array.rotate(shift[2])[index]
+        collector << @alphabet_array.rotate(shift[2])[letter]
       elsif index % 4 == 3
-        collector << @alphabet_array.rotate(shift[3])[index]
+        collector << @alphabet_array.rotate(shift[3])[letter]
       end
     end
-    require "pry"; binding.pry
+    # require "pry"; binding.pry
   end
 end
