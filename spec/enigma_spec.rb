@@ -62,7 +62,7 @@ RSpec.describe "enigma" do
                                                                       date: "040895"
                                                                       })
   end
-
+#this should be changed daily to pass
   it "can encrypt a message with a key and todays date
       and can decrypt it back" do
     encrypted = @enigma.encrypt("hello world", "02715")
