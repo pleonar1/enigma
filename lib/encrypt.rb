@@ -1,5 +1,6 @@
-require "./lib/enigma"
-require "./lib/alphabet"
+require './lib/enigma'
+require './lib/alphabet'
+
 
 
 enigma     = Enigma.new
