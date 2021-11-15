@@ -66,9 +66,14 @@ RSpec.describe "enigma" do
   it "can encrypt a message with a key and todays date
       and can decrypt it back" do
     encrypted = @enigma.encrypt("hello world", "02715")
-    expect(encrypted).to eq( {:date=>"6641",
-                              :encryption=>"lmjashudvtb",
-                              :key=>"02715"})
+    # expect(encrypted).to eq( {:date=>"6641",
+    #                           :encryption=>"lmjashudvtb",
+    #                           :key=>"02715"})
+    expect(encrypted[:encryption]).to be_a String
+    expect(encrypted[:encryption].length).to eq(11)
+    expect(encrypted[:date].length).to eq(4)
+    expect(encrypted[:date]).to be_a String
+    expect(encrypted[:key]).to eq("02715")
     expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq({:date=>"6641",
                                                                     :decryption=>"hello world",
                                                                     :key=>"02715"})
