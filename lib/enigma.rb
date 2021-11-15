@@ -3,10 +3,11 @@ require "date"
 
 
 class Enigma
-  attr_reader :alphabet
+  attr_reader :alphabet_hash, :alphabet_array
 
   def initialize
-    @alphabet = Alphabet.new.index
+    @alphabet_hash  = Alphabet.new.index
+    @alphabet_array = ("a".."z").to_a << " "
   end
 
   def generate_keys
@@ -29,5 +30,29 @@ class Enigma
     c_offset = key.slice(2..3).to_i + date.slice(2).to_i
     d_offset = key.slice(3..4).to_i + date.slice(3).to_i
     [a_offset, b_offset, c_offset, d_offset]
+  end
+
+  def number_generator
+    
+  end
+
+  def encrypt(message, key = generate_key , date = generate_date)
+    shift = shift(key, date)
+    message_array = message.chars
+    collector = []
+    message_array.each_with_index do |letter, index|
+      if index % 4 == 0
+        require "pry"; binding.pry
+        collector << @alphabet_array.rotate(shift[0])[letter.to_i]
+
+      elsif index % 4 == 1
+        collector << @alphabet_array.rotate(shift[1])[index]
+      elsif index % 4 == 2
+        collector << @alphabet_array.rotate(shift[2])[index]
+      elsif index % 4 == 3
+        collector << @alphabet_array.rotate(shift[3])[index]
+      end
+    end
+    require "pry"; binding.pry
   end
 end

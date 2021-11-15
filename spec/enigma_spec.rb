@@ -12,9 +12,11 @@ RSpec.describe "enigma" do
     expect(@enigma).to be_a Enigma
   end
 
-  it "has an alphabet" do
-    expect(@enigma.alphabet).to be_a Hash
-    expect(@enigma.alphabet.count).to eq 27
+  it "has an alphabet in a hash and an array" do
+    expect(@enigma.alphabet_hash).to be_a Hash
+    expect(@enigma.alphabet_hash.count).to eq 27
+    expect(@enigma.alphabet_array).to be_a Array
+    expect(@enigma.alphabet_array.count).to eq 27
   end
 
   it "can generate keys" do
@@ -29,5 +31,18 @@ RSpec.describe "enigma" do
 
   it "can shift" do
     expect(@enigma.shift("02715", "1025")).to eq([3, 27, 73, 20])
+  end
+
+  it "can turn the message into an array of numbers" do
+    expect(@enigma.number_generator("hello world")).to be_a Array
+    expect(@enigma.number_generator("hello world")).to eq([])
+  end
+
+  it "can encrypt" do
+    expect(@enigma.encrypt("hello world", "02715", "040895")).to eq( {
+                                                                      encryption: "keder ohulw",
+                                                                      key: "02715",
+                                                                      date: "040895"
+                                                                      })
   end
 end
