@@ -39,7 +39,8 @@ RSpec.describe "enigma" do
   end
 
   it "can format the date" do
-    expect(@enigma.format_date("040895")).to eq("6641")
+    expect(@enigma.format_date("040895")).to eq("1025")
+    expect(@enigma.format_date("040895")).to be_a String
   end
 
   it "can encrypt" do
