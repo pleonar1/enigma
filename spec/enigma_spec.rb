@@ -5,6 +5,7 @@ require "./lib/alphabet"
 RSpec.describe "enigma" do
   before(:each) do
     @enigma = Enigma.new
+
   end
 
   it "exists" do
@@ -24,5 +25,9 @@ RSpec.describe "enigma" do
   it "can generate the date" do
     expect(@enigma.generate_date).to be_a String
     expect(@enigma.generate_date.length).to be 4
+  end
+
+  it "can shift" do
+    expect(@enigma.shift("02715", "1025")).to eq([3, 27, 73, 20])
   end
 end

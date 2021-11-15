@@ -22,4 +22,8 @@ class Enigma
     final_date = (date_no_dashes.join.to_i) ** 2
     final_date_code = final_date.to_s.slice(-4..-1)
   end
+
+  def shift(key, date)
+
+  end
 end
