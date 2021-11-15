@@ -1,7 +1,6 @@
 require "./lib/alphabet"
 require "date"
 
-
 class Enigma
   attr_reader :alphabet_hash,
               :alphabet_array,
@@ -51,7 +50,6 @@ class Enigma
     b_offset = ((key.slice(1..2).to_i) + (date.slice(1).to_i)) * -1
     c_offset = ((key.slice(2..3).to_i) + (date.slice(2).to_i)) * -1
     d_offset = ((key.slice(3..4).to_i) + (date.slice(3).to_i)) * -1
-
     [a_offset, b_offset, c_offset, d_offset]
   end
 
@@ -82,7 +80,7 @@ class Enigma
     @encrypted_hash[:date]       = date
     @encrypted_hash
   end
-    ##this needs to be formatted
+
   def decrypt(message, key = generate_key , date = generate_date)
     shift = decrypt_shift(key, format_date(date))
     message_array = number_generator(message)
