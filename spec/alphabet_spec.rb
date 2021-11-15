@@ -1,4 +1,4 @@
-require_relative 'simplecov'
+require_relative 'spec_helper'
 require './lib/alphabet'
 
 RSpec.describe "alphabet" do
@@ -13,6 +13,5 @@ RSpec.describe "alphabet" do
   it "has attributes" do
     expect(@alphabet.index).to be_a Hash
     expect(@alphabet.index.count).to eq 27
-
-  end
+    end
 end
