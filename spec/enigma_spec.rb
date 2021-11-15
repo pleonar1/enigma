@@ -10,4 +10,9 @@ RSpec.describe "enigma" do
   it "exists" do
     expect(@enigma).to be_a Enigma
   end
+
+  it "has an alphabet" do
+    expect(@enigma.alphabet).to be_a Hash
+    expect(@enigma.alphabet.count).to eq 27
+  end
 end

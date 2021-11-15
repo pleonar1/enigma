@@ -7,7 +7,7 @@
           1,
           null,
           1,
-          2,
+          4,
           null,
           null,
           null,
@@ -48,9 +48,14 @@
           null,
           1,
           1,
+          2,
+          null,
+          null,
+          1,
           1,
           null,
           null,
+          1,
           1,
           1,
           null,
@@ -59,18 +64,19 @@
       },
       "/Users/paulleonard/mod1_repeat/4project/enigma/lib/enigma.rb": {
         "lines": [
-          null,
+          1,
           null,
           null,
           1,
-          null,
           1,
           null,
+          1,
+          2,
           null,
           null
         ]
       }
     },
-    "timestamp": 1636942507
+    "timestamp": 1636948823
   }
 }
