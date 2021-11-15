@@ -29,12 +29,7 @@ class Enigma
 
   def generate_date
     date = Date.today
-    date_to_string = date.strftime('%d-%m-%Y')
-    date_no_dashes = date_to_string.delete('-').chars
-    date_no_dashes.delete_at(4)
-    date_no_dashes.delete_at(4)
-    final_date = (date_no_dashes.join.to_i) ** 2
-    final_date_code = final_date.to_s.slice(-4..-1)
+    date_to_string = date.strftime('%d%m%y')
   end
 
   def encrypt_shift(key, date)
@@ -61,6 +56,7 @@ class Enigma
   end
 
   def encrypt(message, key = generate_key , date = generate_date)
+    # require "pry"; binding.pry
     shift = encrypt_shift(key, format_date(date))
     message_array = number_generator(message.gsub(/\n/, ""))
     collector = []
@@ -81,9 +77,9 @@ class Enigma
     @encrypted_hash
   end
 
-  def decrypt(message, key = generate_key , date = generate_date)
+  def decrypt(message, key, date = generate_date)
     shift = decrypt_shift(key, format_date(date))
-    message_array = number_generator(message)
+    message_array = number_generator(message.gsub(/\n/, ""))
     collector = []
     message_array.each_with_index do |letter, index|
       if index % 4 == 0
