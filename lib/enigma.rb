@@ -3,11 +3,14 @@ require "date"
 
 
 class Enigma
-  attr_reader :alphabet_hash, :alphabet_array
+  attr_reader :alphabet_hash, :alphabet_array, :encrypted_hash
 
   def initialize
     @alphabet_hash  = Alphabet.new.index
     @alphabet_array = ("a".."z").to_a << " "
+    @encrypted_hash = {encryption: nil,
+                       key: nil,
+                       date: nil}
   end
 
   def generate_keys
@@ -57,7 +60,6 @@ class Enigma
     shift = encrypt_shift(key, format_date(date))
     message_array = number_generator(message)
     collector = []
-    encrypted_hash = Hash.new
     message_array.each_with_index do |letter, index|
       if index % 4 == 0
         collector << @alphabet_array.rotate(shift[0])[letter]
@@ -69,10 +71,10 @@ class Enigma
         collector << @alphabet_array.rotate(shift[3])[letter]
       end
     end
-    encrypted_hash[:encryption] = collector.join
-    encrypted_hash[:key]       = key
-    encrypted_hash[:date]      = date
-    encrypted_hash
+    @encrypted_hash[:encryption] = collector.join
+    @encrypted_hash[:key]       = key
+    @encrypted_hash[:date]      = date
+    @encrypted_hash
   end
     ##this needs to be formatted
   def decrypt(message, key = generate_key , date = generate_date)
