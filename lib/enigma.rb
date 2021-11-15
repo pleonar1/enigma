@@ -11,6 +11,9 @@ class Enigma
     @encrypted_hash = {encryption: nil,
                        key: nil,
                        date: nil}
+    @decrypted_hash = {decryption: nil,
+                       key: nil,
+                       date: nil}
   end
 
   def generate_keys
@@ -72,8 +75,8 @@ class Enigma
       end
     end
     @encrypted_hash[:encryption] = collector.join
-    @encrypted_hash[:key]       = key
-    @encrypted_hash[:date]      = date
+    @encrypted_hash[:key]        = key
+    @encrypted_hash[:date]       = date
     @encrypted_hash
   end
     ##this needs to be formatted
@@ -81,7 +84,6 @@ class Enigma
     shift = decrypt_shift(key, format_date(date))
     message_array = number_generator(message)
     collector = []
-    encrypted_hash = Hash.new
     message_array.each_with_index do |letter, index|
       if index % 4 == 0
         collector << @alphabet_array.rotate(shift[0])[letter]
@@ -93,9 +95,9 @@ class Enigma
         collector << @alphabet_array.rotate(shift[3])[letter]
       end
     end
-    encrypted_hash[:encryption] = collector.join
-    encrypted_hash[:key]       = key
-    encrypted_hash[:date]      = date
-    encrypted_hash
+    @decrypted_hash[:decryption] = collector.join
+    @decrypted_hash[:key]        = key
+    @decrypted_hash[:date]       = date
+    @decrypted_hash
   end
 end

@@ -57,7 +57,7 @@ RSpec.describe "enigma" do
 
   it "can decrypt" do
     expect(@enigma.decrypt("keder ohulw", "02715", "040895")).to eq( {
-                                                                      encryption: "hello world",
+                                                                      decryption: "hello world",
                                                                       key: "02715",
                                                                       date: "040895"
                                                                       })
