@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-15T15:11:10-05:00">2021-11-15T15:11:10-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2021-11-15T15:31:57-05:00">2021-11-15T15:31:57-05:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -30,7 +30,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.72
+         2.98
        </span>
     </span> hits/line
     )
@@ -43,8 +43,8 @@
   </div>
 
   <div class="t-line-summary">
-    <b>109</b> relevant lines,
-    <span class="green"><b>109</b> lines covered</span> and
+    <b>110</b> relevant lines,
+    <span class="green"><b>110</b> lines covered</span> and
     <span class="red"><b>0</b> lines missed. </span>
     (<span class="green">
   100.0%
@@ -73,11 +73,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#994da60b9bd38133ed0db567b8ccebf1936db9a4" class="src_link" title="lib/alphabet.rb">lib/alphabet.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">35</td>
-            <td class="cell--number">4</td>
-            <td class="cell--number">4</td>
+            <td class="cell--number">36</td>
+            <td class="cell--number">5</td>
+            <td class="cell--number">5</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">3.75</td>
+            <td class="cell--number">9.40</td>
             
           </tr>
         
@@ -134,8 +134,8 @@
     
 
     <div class="t-line-summary">
-      <b>4</b> relevant lines.
-      <span class="green"><b>4</b> lines covered</span> and
+      <b>5</b> relevant lines.
+      <span class="green"><b>5</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -164,7 +164,7 @@
 
             
 
-            <code class="ruby">  attr_reader :index</code>
+            <code class="ruby">  attr_reader :index, :alphabet_array</code>
           </li>
         </div>
       
@@ -175,7 +175,7 @@
 
             
 
-            <code class="ruby">  </code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -191,8 +191,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="12" data-linenumber="5">
-            <span class="hits">12</span>
+          <li class="covered" data-hits="22" data-linenumber="5">
+            <span class="hits">22</span>
             
 
             
@@ -510,7 +510,18 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
+          <li class="covered" data-hits="22" data-linenumber="34">
+            <span class="hits">22</span>
+            
+
+            
+
+            <code class="ruby">    @alphabet_array = (&quot;a&quot;..&quot;z&quot;).to_a &lt;&lt; &quot; &quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="35">
             
             
 
@@ -521,7 +532,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
+          <li class="never" data-hits="" data-linenumber="36">
             
             
 
@@ -701,7 +712,7 @@
 
             
 
-            <code class="ruby">    @alphabet_array = (&quot;a&quot;..&quot;z&quot;).to_a &lt;&lt; &quot; &quot;</code>
+            <code class="ruby">    @alphabet_array = Alphabet.new.alphabet_array</code>
           </li>
         </div>
       

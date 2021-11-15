@@ -10,7 +10,7 @@ class Enigma
 
   def initialize
     @alphabet_hash  = Alphabet.new.index
-    @alphabet_array = ("a".."z").to_a << " "
+    @alphabet_array = Alphabet.new.alphabet_array
     @encrypted_hash = {encryption: nil,
                        key: nil,
                        date: nil}

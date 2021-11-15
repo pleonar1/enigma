@@ -13,5 +13,6 @@ RSpec.describe "alphabet" do
   it "has attributes" do
     expect(@alphabet.index).to be_a Hash
     expect(@alphabet.index.count).to eq 27
+    expect(@alphabet.alphabet_array).to be_a Array
   end
 end
