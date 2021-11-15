@@ -29,11 +29,20 @@ class Enigma
     final_date_code = final_date.to_s.slice(-4..-1)
   end
 
-  def shift(key, date)
+  def encrypt_shift(key, date)
     a_offset = key.slice(0..1).to_i + date.slice(0).to_i
     b_offset = key.slice(1..2).to_i + date.slice(1).to_i
     c_offset = key.slice(2..3).to_i + date.slice(2).to_i
     d_offset = key.slice(3..4).to_i + date.slice(3).to_i
+    [a_offset, b_offset, c_offset, d_offset]
+  end
+
+  def decrypt_shift(key, date)
+    a_offset = ((key.slice(0..1).to_i) + (date.slice(0).to_i)) * -1
+    b_offset = ((key.slice(1..2).to_i) + (date.slice(1).to_i)) * -1
+    c_offset = ((key.slice(2..3).to_i) + (date.slice(2).to_i)) * -1
+    d_offset = ((key.slice(3..4).to_i) + (date.slice(3).to_i)) * -1
+
     [a_offset, b_offset, c_offset, d_offset]
   end
 
@@ -45,7 +54,7 @@ class Enigma
   end
 
   def encrypt(message, key = generate_key , date = generate_date)
-    shift = shift(key, format_date(date))
+    shift = encrypt_shift(key, format_date(date))
     message_array = number_generator(message)
     collector = []
     encrypted_hash = Hash.new
@@ -65,9 +74,9 @@ class Enigma
     encrypted_hash[:date]      = date
     encrypted_hash
   end
-
+    ##this needs to be formatted
   def decrypt(message, key = generate_key , date = generate_date)
-    shift = shift(key, format_date(date))
+    shift = decrypt_shift(key, format_date(date))
     message_array = number_generator(message)
     collector = []
     encrypted_hash = Hash.new
@@ -86,6 +95,5 @@ class Enigma
     encrypted_hash[:key]       = key
     encrypted_hash[:date]      = date
     encrypted_hash
-    require "pry"; binding.pry
   end
 end

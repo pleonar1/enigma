@@ -29,8 +29,12 @@ RSpec.describe "enigma" do
     expect(@enigma.generate_date.length).to be 4
   end
 
-  it "can shift" do
-    expect(@enigma.shift("02715", "1025")).to eq([3, 27, 73, 20])
+  it "can shift for encryption" do
+    expect(@enigma.encrypt_shift("02715", "1025")).to eq([3, 27, 73, 20])
+  end
+
+  it "can shift for decryption" do
+    expect(@enigma.decrypt_shift("02715", "1025")).to eq([-3, -27, -73, -20])
   end
 
   it "can turn the message into an array of numbers" do
