@@ -71,7 +71,7 @@ RSpec.describe "enigma" do
     expect(encrypted[:date]).to be_a String
     expect(encrypted[:date].length).to eq(6)
     expect(encrypted[:key]).to eq("02715")
-    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq({:date=>"151121",
+    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq({:date=>"161121",
                                                                     :decryption=>"hello world",
                                                                     :key=>"02715"})
   end
