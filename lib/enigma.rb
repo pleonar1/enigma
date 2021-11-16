@@ -55,7 +55,11 @@ class Enigma
     end
   end
 
-  def encrypt(message, key = generate_key , date = generate_date)
+  def encrypt(message, key = nil, date = generate_date)
+    if key.nil?
+      key = generate_key
+    end
+      
     # require "pry"; binding.pry
     shift = encrypt_shift(key, format_date(date))
     message_array = number_generator(message.gsub(/\n/, ""))
