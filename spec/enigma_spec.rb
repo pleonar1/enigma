@@ -30,19 +30,19 @@ RSpec.describe "enigma" do
   end
 
   it "can shift for encryption" do
-    expect(@enigma.encrypt_shift("02715", "1025")).to eq([3, 27, 73, 20])
+    expect(@enigma.shift("02715", "1025")).to eq([3, 27, 73, 20])
   end
 
   it "can shift for decryption" do
-    expect(@enigma.decrypt_shift("02715", "1025")).to eq([-3, -27, -73, -20])
+    expect(@enigma.shift("02715", "1025", false)).to eq([-3, -27, -73, -20])
   end
 
-  it "can turn the message into an array of numbers" do
+  it "can turn the message into an array of indexes in the alphabet" do
     expect(@enigma.number_generator("hello world")).to be_a Array
     expect(@enigma.number_generator("hello world")).to eq([7, 4, 11, 11, 14, 26, 22, 14, 17, 11, 3])
   end
 
-  it "can format the date" do
+  it "it can square the date and take the last 4 digits" do
     expect(@enigma.format_date("040895")).to eq("1025")
     expect(@enigma.format_date("040895")).to be_a String
   end
@@ -62,22 +62,20 @@ RSpec.describe "enigma" do
                                                                       date: "040895"
                                                                       })
   end
-
-  it "can encrypt a message with a key and todays date
-      and can decrypt it back" do
+  #make this two tests
+  it "can encrypt a message with a key and todays date and can decrypt it back" do
     encrypted = @enigma.encrypt("hello world", "02715")
     expect(encrypted[:encryption]).to be_a String
     expect(encrypted[:encryption].length).to eq(11)
     expect(encrypted[:date]).to be_a String
     expect(encrypted[:date].length).to eq(6)
     expect(encrypted[:key]).to eq("02715")
-    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq({:date=>"151121",
+    expect(@enigma.decrypt(encrypted[:encryption], "02715")).to eq({:date=>"161121",
                                                                     :decryption=>"hello world",
                                                                     :key=>"02715"})
   end
-
-  it "can encrypt a message by generating a random
-      key and todays date" do
+  #make this test more robust
+  it "can encrypt a message by generating a random key and todays date" do
     encrypted = @enigma.encrypt("hello world")
     expect(encrypted).to be_a Hash
     expect(encrypted.keys.count).to eq 3
